@@ -3,6 +3,6 @@ root 'pages#home'
 
 get 'about', to: 'pages#about'
 
-resources :jabs, only: [:show]
+resources :jabs, only: [:show, :index, :new, :create]
 
 end

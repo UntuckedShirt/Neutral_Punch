@@ -1,0 +1,21 @@
+<h1> Jabs listing page <h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jabs.each do |jab| %>
+      <tr>
+        <td><%= jab.title %></td>
+        <td><%= jab.description %></td>
+        <td>Placeholder</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

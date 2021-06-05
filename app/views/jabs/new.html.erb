@@ -1,0 +1,24 @@
+<h1> Throw a new Jab <h1>
+<% if @jab.errors.any? %>
+  <h2>Your lack of practice prevented a jab from being thrown</h2>
+    <ul>
+        <% @jab.errors.full_messages.each do |msg| %>
+        <li><%= msg %> </li>
+        <% end %>
+    </ul>
+    <% end %>
+<%# this helps with form building%>
+<%= form_with scope: :jab, url: jabs_path, local: true do |f| %>
+    <% @jab%>
+    <p> 
+        <%= f.label :title %><br/> 
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :description %><br/> 
+        <%= f.text_area :description %> 
+    </p>
+  <p>
+    <%= f.submit %> 
+  </p>
+<% end %>
