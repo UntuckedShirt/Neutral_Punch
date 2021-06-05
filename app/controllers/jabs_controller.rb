@@ -1,7 +1,8 @@
 class JabsController < ApplicationController
+    before_action :set_jab, only: [:show, :edit, :update, :destroy]
 
     def show
-        @jab = Jab.find(params[:id])
+        
     end
 
     def index
@@ -13,8 +14,13 @@ class JabsController < ApplicationController
         @jab = Jab.new
     end
 
+    def edit
+        
+
+    end
+
     def create
-        @jab = Jab.new(params.require(:jab).permit(:title, :description))
+        @jab = Jab.new(jab_params)
         if @jab.save
             flash[:notice] = "Jab was thrown successfully"
             redirect_to @jab
@@ -26,4 +32,29 @@ class JabsController < ApplicationController
         end
       end
 
+      def update
+        
+        if @jab.update(jab_params)
+          flash[:notice] = "Jab was revised and practiced successfully."
+          redirect_to @jab
+        else
+          render 'edit'
+        end
+      end
+
+      def destroy
+        
+        @jab.destroy
+        redirect_to jabs_path
+      end
+end
+
+private
+
+def set_jab
+    @jab = Jab.find(params[:id])
+end
+
+def jab_params
+    params.require(:jab).permit(:title, :description)
 end
