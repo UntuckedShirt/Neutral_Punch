@@ -5,4 +5,5 @@ get 'about', to: 'pages#about'
 
 resources :jabs #only: [:show, :index, :new, :create, :edit, :update, :destroy]
 
+get 'sign_up', to: 'users#new'
 end

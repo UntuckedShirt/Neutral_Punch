@@ -21,6 +21,7 @@ class JabsController < ApplicationController
 
     def create
         @jab = Jab.new(jab_params)
+        @jab.user = User.first
         if @jab.save
             flash[:notice] = "Jab was thrown successfully"
             redirect_to @jab

@@ -10,6 +10,7 @@
 
   <tbody>
     <% @jabs.each do |jab| %>
+   <div><%= jab.user.username if jab.user%></div>
       <tr>
         <td><%= jab.title %></td>
         <td><%= jab.description %></td>
