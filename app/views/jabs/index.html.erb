@@ -1,5 +1,4 @@
-<h1> Jabs listing page <h1>
-
+<div><h6 class="text-center mt-4">Jabs listing page <h6></div>
 <table>
   <thead>
     <tr>
@@ -14,7 +13,7 @@
       <tr>
         <td><%= jab.title %></td>
         <td><%= jab.description %></td>
-        <td><%= link_to 'Show', jab_path(jab) %></td>
+        <td><%= link_to 'View', jab_path(jab) %></td>
         <td><%= link_to 'Edit', jab_path(jab) %></td>
         <td><%= link_to 'Delete', jab_path(jab), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

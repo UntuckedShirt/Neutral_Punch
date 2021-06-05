@@ -1,11 +1,5 @@
-<% if @jab.errors.any? %>
-  <h2>Your lack of practice prevented a jab from being thrown</h2>
-    <ul>
-        <% @jab.errors.full_messages.each do |msg| %>
-        <li><%= msg %> </li>
-        <% end %>
-    </ul>
-    <% end %>
+<%= render 'shared/errors' %> <%# definig what obj would be in partial if its rednered from for partial new/edit%>
+
 <%# this helps with form building%>
 <%= form_with(model: @jab, local: true) do |f| %>
     <% @jab%>
@@ -20,4 +14,5 @@
   <p>
     <%= f.submit %> 
   </p>
+      <%= link_to '[ Cancel and return to articles listing ]', jabs_path, class: "text-info" %>
 <% end %>
