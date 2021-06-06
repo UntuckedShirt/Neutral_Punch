@@ -15,6 +15,7 @@ post or a few hundred characters that link to the actual post.%>
         <tr>
         
             <td><%= link_to category.name, category_path(category) %></td>
+            <p> <%= pluralize(category.jabs.count, "jab") %></p>
             <%# allows display of categories%>
                 
             <%# below is saying for each article.categories do and variable available is cateogry%>

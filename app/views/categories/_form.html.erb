@@ -1,0 +1,20 @@
+<%#this is taken from new template%>
+
+<%= render 'shared/errors', obj: @category %>
+
+<%= form_with(model: @category, local: true)  do |f| %>
+
+    <p>
+    <%# text_field gives a 1 line box%>
+        <%= f.label :name, "Category name" %><br/>
+        <%= f.text_field :name, placeholder: "Enter name" %>
+    </p>
+
+    <p>
+    <%# creates a submit button%>
+    <%# code below allowed the record being created isa new %>
+        <%= f.submit %>
+    </p>
+
+<%#= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-info" %>
+<% end %>
