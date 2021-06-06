@@ -1,8 +1,11 @@
-<h6> Edited Jabs <h6>
+<h1 class="text-center mt-4">Edited Jabs </h1>
 
 <p><strong>Title: </strong><%= @jab.title %></p>
 <p><strong>Description: </strong><%= @jab.description %></p>
-<div> <%= @jab.user.username if @jab.user %> </div>
-<%= link_to 'Edit', edit_jab_path(@jab) %> |
-<%= link_to 'Delete', jab_path(@jab), method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <div> <%= @jab.user.username if @jab.user %> </div>
+    <%= link_to gravatar_for(@jab.user), user_path(@jab.user) %>
+    <% if logged_in? && @jab.user == current_user %>
+    <%= link_to 'Edit', edit_jab_path(@jab) %> |
+    <%= link_to 'Delete', jab_path(@jab), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
 <%= link_to 'Return to jab listing', jabs_path %>

@@ -1,9 +1,13 @@
 class PagesController < ApplicationController
 
-    def home
-    end
-  
-    def about
-    end
+  def home
+    #this renders the homepage view
+    redirect_to jabs_path if logged_in?
+
+end
+
+  def about
     
   end
+    
+end

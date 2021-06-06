@@ -1,0 +1,29 @@
+<%#styling the same as create or edit new users%>
+
+<h1>Log in to user</h1>
+
+<%# this renders from form partial%>
+
+
+<%= form_with(scope: :session, url: login_path, local: true)  do |f| %>
+
+    <p>
+    <%# text_field gives a 1 line box%>
+        <%= f.label :username %><br/>
+        <%= f.text_field :username %>
+    </p>
+
+    <p>
+    <%= f.label :password %><br/>
+    <%# text_area give an expandable box%>
+        <%= f.password_field :password %>
+    </p>
+
+    <p>
+    <%# creates a submit button%>
+    <%# code below allowed the record being created isa new %>
+        <%= f.submit "Log In" %>
+    </p>
+
+<%= link_to '[ Cancel and return to articles listing ]', jabs_path, class: "text-info" %>
+<% end %>

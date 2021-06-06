@@ -6,11 +6,11 @@
 <%# if @article.errors.any? %> <%# <- old code that refers to articles object%>
 <%# if obj.errors.any? %> <%#name gives name of class %>
 
-  <% if @jab.errors.any? %>
-  <h2>Your lack of practice prevented a jab from being thrown</h2>
+  <% if obj.errors.any? %>
+  <h2>Your lack of practice prevented <%= obj.class.name.downcase %>'s jab from being thrown</h2>
     <ul>
-        <% @jab.errors.full_messages.each do |msg| %>
-        <li><%= msg %> </li>
+        <% obj.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
         <% end %>
     </ul>
-    <% end %>
+  <% end %>

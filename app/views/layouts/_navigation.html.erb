@@ -10,26 +10,46 @@
             <%#<li class="nav-item">
               <%= link_to "Jabs", jabs_path, class: "nav-link" %>
             <%#</li>%>
+          </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <%#<a class="nav-link" href="#">Features</a><%>
+              <%= link_to "Challengers", users_path, class: "nav-link" %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
                 Jabs
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">             
+                <% if logged_in? %>
                 <%= link_to "Create new jab", new_jab_path, class: "dropdown-item" %>
+                <% end %>
                 <%= link_to "View jabs", jabs_path, class: "dropdown-item" %>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+          <% if logged_in? %> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile [<%= current_user.username %>]
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Log out', logout_path, class: "nav-link", method: :delete %>
+            </li>
+            <% else %>
+              <li class="nav-item">
+            <%= link_to 'Log in', login_path, class: "nav-link" %>
+          </li>
+              <li class="nav-item">
+            <%= link_to 'Sign up', sign_up_path, class: "nav-link" %>
+          </li>
+            <% end %>
+          </div>
+        </nav>

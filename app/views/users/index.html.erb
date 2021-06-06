@@ -1,0 +1,31 @@
+<h1 class="text-center mt-4"> Challengers </h1>
+
+<div> <%= will_paginate @jabs, :container => false %>
+</div>
+
+<tbody>
+    <div>
+    <% @users.each do |user| %>
+        <div>
+            <%= link_to user.username, user %></div>
+        <tr>
+        <td><%= link_to gravatar_for(user, size: 150), user %></td>
+        <td><%= pluralize(user.jabs.count, "jab") %></td>
+        <td><%= link_to "View profile", user %></td>
+            <% if logged_in? && user == current_user %>
+        <td><%= link_to "Edit profile", edit_user_path(user) %></td>
+        <% end %>
+      </tr>
+        </tbody>
+        </table> 
+        <div>
+            <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+    </div>
+
+    <div> <%= will_paginate @jabs, :container => false %>
+</div>
