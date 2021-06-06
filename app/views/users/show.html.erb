@@ -6,16 +6,14 @@
     <% if logged_in? && @user == current_user %>
         <%= link_to "Edit your profile", edit_user_path(@user) %>
     </div>
-
+<% end %>
 <br>
 
 </br>
 
+
 <h3> Jabs </h3>
 
-<div> <%= will_paginate @jabs, :container => false %>
-</div>
 
 <%= render 'jabs/jab' %>
 
-<% end %>

@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4"> Challengers </h1>
 
-<div> <%= will_paginate @jabs, :container => false %>
+<div> 
 </div>
 
 <tbody>
@@ -12,9 +12,14 @@
         <td><%= link_to gravatar_for(user, size: 150), user %></td>
         <td><%= pluralize(user.jabs.count, "jab") %></td>
         <td><%= link_to "View profile", user %></td>
-            <% if logged_in? && user == current_user %>
-        <td><%= link_to "Edit profile", edit_user_path(user) %></td>
-        <% end %>
+          <% if logged_in? %>
+            <% if user == current_user %>
+              <%= link_to "Edit profile", edit_user_path(user) %>
+              <% end %>
+              <% if current_user.admin? %>
+              <%= link_to "Delete user", user_path(user), class: "dropdown-item text-danger", method: :delete, data: {confirm: " You sure you wanna ban this fool?"} %>
+              <% end %>
+            <% end %>
       </tr>
         </tbody>
         </table> 
@@ -27,5 +32,5 @@
   <% end %>
     </div>
 
-    <div> <%= will_paginate @jabs, :container => false %>
+    <div> 
 </div>

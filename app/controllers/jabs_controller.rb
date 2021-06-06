@@ -46,7 +46,8 @@ class JabsController < ApplicationController
         end
       end
 
-      def destroy        
+      def destroy  
+        @jab = Jab.find(params[:id])      
         @jab.destroy
         redirect_to jabs_path
       end
@@ -62,7 +63,7 @@ def jab_params
 end
 
 def require_same_user
-  if current_user != @jab.user
+  if current_user != @jab.user && !current_user.admin?
     flash[:alert] = "You can only edit or delete your own jab"
     redirect_to @jab
   end

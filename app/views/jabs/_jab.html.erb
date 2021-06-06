@@ -1,32 +1,44 @@
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
+<table> 
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th colspan="3">Actions</th>
+        </tr>
+    </thead>
+<tbody>
 
-  <tbody>
-    <% @jabs.each do |jab| %>
-    <div>
-        <% if jab.user %>
-   <%= link_to jab.user.username, user_path(jab.user) %>
-   <% end %>
-   </div>
-      <tr>
-        <td><%= jab.title %></td>
-        <td><%= jab.description %></td>
-        <td><%= link_to 'View', jab_path(jab) %></td>
-        <% if logged_in? && (jab.user) == current_user %>
-        <td><%= link_to 'Edit', jab_path(jab) %></td>
-        <td><%= link_to 'Delete', jab_path(jab), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table> 
-<p>
-    <%= link_to 'Throw new jab', new_jab_path %>
-</p>
+<% @jabs.each do |jab| %>
+        <tr>
+        
+            <td><%= link_to jab.title, jab_path(jab) %></td>
+            <%# allows display of categories%>
+                
+            <%# below is saying for each article.categories do and variable available is cateogry%>
+              
+            
+            <td><%= jab.description %></td>
+            <%# Method does need to be displayed/specified in show link_to%>
+            <td><%= link_to 'View', jab_path(jab) %></td>
+            <%# allows articles to only be edited by current_user%>
+            <%# also the viewd throuh user show page %>
+            <% if logged_in? && (jab.user == current_user || current_user.admin?) %>
+            <%#allows the editing of article path%>
+            <td><%= link_to 'Edit', edit_jab_path(jab) %></td>
+            <%# Destroy link gets added here%>
+            <%# Rails knows to find the id of article, you can use article.id or just leave it as article%>
+            <%# Specify in code that we want and is a delete request%>
+            <td><%= link_to 'Delete', jab_path(jab), method: :delete, data: { confirm: "You sure my nigga?" } %></td>
+            <% end %>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<%# this creates a path to create a new article on the aticles page%>
+<p><%= link_to 'Create new jab', new_jab_path %></p>
+
+<%= link_to 'Home page', root_path %>
+
+<%= link_to 'About page', about_path %>
+
