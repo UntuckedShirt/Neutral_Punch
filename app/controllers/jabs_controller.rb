@@ -59,7 +59,7 @@ def set_jab
 end
 
 def jab_params
-    params.require(:jab).permit(:title, :description)
+    params.require(:jab).permit(:title, :description, category_ids: [])
 end
 
 def require_same_user

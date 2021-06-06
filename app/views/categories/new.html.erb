@@ -1,0 +1,18 @@
+
+
+<%= form_with(model: @category, local: true)  do |f| %>
+
+    <p>
+    <%# text_field gives a 1 line box%>
+        <%= f.label :name, "Category name" %><br/>
+        <%= f.text_field :name %>
+    </p>
+
+    <p>
+    <%# creates a submit button%>
+    <%# code below allowed the record being created isa new %>
+        <%= f.submit %>
+    </p>
+
+<%= link_to '[ Cancel and return to jabs listing ]', jabs_path, class: "text-info" %>
+<% end %>

@@ -11,13 +11,15 @@
 
 <% @jabs.each do |jab| %>
         <tr>
-        
-            <td><%= link_to jab.title, jab_path(jab) %></td>
+        <% if jab.user %>
+        <%= link_to jab.user.username, user_path(jab.user) %>
+            <% end %>
             <%# allows display of categories%>
-                
+                <% if jab.categories.any? %>
             <%# below is saying for each article.categories do and variable available is cateogry%>
-              
-            
+              <%= render jab.categories %>
+            <% end %>
+            <td><%= link_to jab.title, jab_path(jab) %></td>
             <td><%= jab.description %></td>
             <%# Method does need to be displayed/specified in show link_to%>
             <td><%= link_to 'View', jab_path(jab) %></td>
@@ -35,10 +37,9 @@
         <% end %>
     </tbody>
 </table>
-<%# this creates a path to create a new article on the aticles page%>
+<%# this creates a path to create a new jab on the jabs page%>
 <p><%= link_to 'Create new jab', new_jab_path %></p>
 
 <%= link_to 'Home page', root_path %>
 
 <%= link_to 'About page', about_path %>
-

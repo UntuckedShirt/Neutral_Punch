@@ -1,0 +1,14 @@
+<%# taken from show.html.erb%>
+
+<h1> Category: <%= @category.name %> </h1>
+
+<% if logged_in? && current_user.admin? %>
+
+    <div class="text-center mt-4">
+    <%= link_to "Edit your category name", edit_category_path(@category) %>
+    </div>
+<% end %>
+
+<h3> Jabs </h3>
+<%# jabs come before jab obj %>
+<%= render 'jabs/jab' %>

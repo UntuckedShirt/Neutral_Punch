@@ -13,4 +13,5 @@ get 'login', to: 'sessions#new'
  post 'login', to: 'sessions#create'
  #handle sessions logout
  delete 'logout', to: 'sessions#destroy'
+ resources :categories, except: [:destroy]
 end

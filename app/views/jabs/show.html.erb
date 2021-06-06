@@ -3,15 +3,15 @@
 <p><strong>Title: </strong><%= @jab.title %></p>
 <p><strong>Description: </strong><%= @jab.description %></p>
 <div> <%= @jab.user.username if @jab.user %>
-         <%= link_to gravatar_for(@jab.user), user_path(@jab.user) %>
-<%# allows display of categories%>
-                <% if @jab.categories.any? %>
-                <%# below is saying for each article.categories do and variable available is cateogry%>
-               <%= render @jab.categories %>
-<% end %>
+        <%= link_to gravatar_for(@jab.user), user_path(@jab.user) %>
+                <%# allows display of categories%>
+        <% if @jab.categories.any? %>
+        <%# below is saying for each article.categories do and variable available is cateogry%>
+        <%= render @jab.categories %>
+    <% end %>
 </div>
 <%# same as in artcles partial allows only the editing of current_users articles%>
-<% if logged_in? && (jab.user == current_user || current_user) %>
+<% if logged_in? && @jab.user == current_user || current_user %>
 <%# I want the ability to edit and delete from the show page%>
 <%= link_to 'Edit', edit_jab_path(@jab) %>
 
@@ -19,7 +19,7 @@
 <%#= link_to 'Delete Article', articles_delete_url, method: :delete %>
 
 
-<%= link_to 'Delete', jabs_delete_path(@jab), method: :delete, data: { confirm: "Are you sure my nigga?" } %>
+<%= link_to 'Delete', jabs_path(@jab), method: :delete, data: { confirm: "Are you sure my nigga?" } %>
 <% end %>
 
 <%= link_to 'Return to jabs listing', jabs_path %>

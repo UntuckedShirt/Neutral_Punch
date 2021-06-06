@@ -1,0 +1,26 @@
+<div><h1 class="text-center mt-4">Categories </h1></div>
+<br></br>
+<div> <br><%= will_paginate @categories, :container => false %>
+</div></br>
+<%#The index action in a controller is used to display a 
+summarized listing of all the items in a table. 
+If there are big blog posts as each item, then the 
+index would usually contain either a summary of the 
+post or a few hundred characters that link to the actual post.%>
+
+<%# render from index.html. see section 6/144%>
+
+
+<% @categories.each do |category| %>
+        <tr>
+        
+            <td><%= link_to category.name, category_path(category) %></td>
+            <%# allows display of categories%>
+                
+            <%# below is saying for each article.categories do and variable available is cateogry%>
+          
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
