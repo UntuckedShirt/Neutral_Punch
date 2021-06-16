@@ -21,6 +21,12 @@
     </p>
 
     <p>
+    <%= f.label :password_confirmation %><br/>
+    <%# text_area give an expandable box%>
+        <%= f.password_field :password %>
+    </p>
+
+    <p>
     <%# creates a submit button%>
     <%# code below allowed the record being created isa new %>
         <%= f.submit(@user.new_record? ? "Sign up" : "Update account") %>

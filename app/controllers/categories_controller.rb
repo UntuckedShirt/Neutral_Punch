@@ -20,6 +20,17 @@ class CategoriesController < ApplicationController
         end
       end
 
+    def index
+        @categories = Category.paginate(page: params[:page], per_page: 5)
+
+    end
+
+      def show
+        @category = Category.find(params[:id])
+        @jabs = @category.jabs.paginate(page: params[:page], per_page: 5)
+
+    end
+
       def edit
         @category = Category.find(params[:id])
 
@@ -36,25 +47,11 @@ class CategoriesController < ApplicationController
         end
     end
 
-    
-    def index
-        @categories = Category.paginate(page: params[:page], per_page: 5)
-
-    end
-
-
-
-    def show
-        @category = Category.find(params[:id])
-        @jabs = Category.all
-
-    end
-
 
     private
 
     def category_params
-        params.require(:category).permit(:name)
+        params.require(:category).permit(:name, :user)
 
     end
 

@@ -29,7 +29,7 @@ class JabsController < ApplicationController
         @jab.user = current_user
         if @jab.save
             flash[:notice] = "Jab was thrown successfully"
-            redirect_to @jab
+            redirect_to (@jab)
         else
             #if saving fails render to form
             render 'new'

@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.3'
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'omniauth-google-oauth2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -28,6 +31,7 @@ gem 'will_paginate', '~> 3.3'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'dotenv-rails'
 # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

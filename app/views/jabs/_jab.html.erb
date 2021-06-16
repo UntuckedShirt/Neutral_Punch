@@ -12,7 +12,7 @@
 <% @jabs.each do |jab| %>
         <tr>
         <% if jab.user %>
-        <%= link_to jab.user.username, user_path(jab.user) %>
+        <%#= link_to jab.user.username, user_path(jab.user) %>
             <% end %>
             <%# allows display of categories%>
                 <% if jab.categories.any? %>
@@ -31,7 +31,7 @@
             <%# Destroy link gets added here%>
             <%# Rails knows to find the id of article, you can use article.id or just leave it as article%>
             <%# Specify in code that we want and is a delete request%>
-            <td><%= link_to 'Delete', jab_path(jab), method: :delete, data: { confirm: "You sure my nigga?" } %></td>
+            <td><%= link_to 'Delete', jab_path(jab), method: :delete, data: { confirm: "You sure you want to delete this?" } %></td>
             <% end %>
         </tr>
         <% end %>
